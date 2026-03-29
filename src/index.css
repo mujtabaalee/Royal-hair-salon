@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1A1A1A;
+  --secondary: #262626;
+  --accent: #D4AF37;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-primary text-white;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply px-8 py-3 bg-accent text-primary font-bold rounded-sm transition-all duration-300 hover:bg-gold-light hover:scale-105 active:scale-95 shadow-lg shadow-accent/20;
+  }
+  
+  .btn-outline {
+    @apply px-8 py-3 border-2 border-accent text-accent font-bold rounded-sm transition-all duration-300 hover:bg-accent hover:text-primary active:scale-95;
+  }
+
+  .nav-link {
+    @apply relative text-white/80 hover:text-accent transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-[-4px] w-0 h-[2px] bg-accent transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .glass-card {
+    @apply bg-secondary/50 backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-accent/30 transition-all duration-500;
+  }
+}
+
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-dark via-accent to-gold-light;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
